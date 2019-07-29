@@ -1,7 +1,5 @@
 # liri-node-app
 
-https://whereispolaris.github.io/liri-node-app/
-
 Language Interpretation and Recognition Interface (LIRI). A command line node app that takes in parameters and returns data. It searches Spotify for songs, Bands in Town for concerts, and OMDB for movies. 
 
 Technologies Used:
