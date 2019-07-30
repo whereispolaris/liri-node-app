@@ -1,31 +1,33 @@
 require("dotenv").config();
-var keys = require("./keys.js");
-var axios = require("axios");
-var fs = require("fs");
-var Spotify = require('node-spotify-api');
+const keys = require("./keys.js");
+const axios = require("axios");
+const fs = require("fs");
+const Spotify = require('node-spotify-api');
+const spotify = new Spotify(keys.spotify);
+const command = process.argv[2];
+const value = process.argv[3];
 
-var spotify = new Spotify(keys.spotify);
-
-var command = process.argv;
-
-switch (command[2]) {
+switch (command) {
     case "concert-this":
-        concertThis(command[3])
+        concertThis(value)
         break;
     case "spotify-this-song":
-        spotifyThis(command[3]);
+        spotifyThis(value)
         break;
     case "movie-this":
-        movieThis(command[3])
+        movieThis(value)
         break;
     case "do-what-it-says":
-        console.log("You can do it yourself")
+        whatItSays(value)
         break;
 }
 
 function concertThis(band) {
     axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(function (response) {
         console.log(response.data);
+        // * Name of the venue
+        // * Venue location
+        // * Date of the Event(use moment to format this as "MM/DD/YYYY")
     }).catch(function (error) {
         console.log(error);
     });
@@ -35,6 +37,14 @@ function movieThis(movie) {
     axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
             console.log("The movie's rating is: " + response.data.imdbRating);
+            // * Title of the movie.
+            // * Year the movie came out.
+            // * IMDB Rating of the movie.
+            // * Rotten Tomatoes Rating of the movie.
+            // * Country where the movie was produced.
+            // * Language of the movie.
+            // * Plot of the movie.
+            // * Actors in the movie.
         })
         .catch(function (error) {
             console.log(error);
@@ -45,11 +55,14 @@ function spotifyThis(song) {
     spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
+            // * Artist(s)
+            // * The song's name
+            // * A preview link of the song from Spotify
+            // * The album that the song is from  
         }
         console.log(data);
     });
 }
-
 
 
 // Commands that will be available:
