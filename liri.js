@@ -1,6 +1,23 @@
 require("dotenv").config();
 
-var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify(keys.spotify);
+
+var command = process.argv;
+
+switch (command[2]) {
+    case "concert-this":
+        console.log("Find concerts")
+        break;
+    case "spotify-this-song":
+        console.log("Find spotify")
+        break;
+    case "movie-this":
+        console.log("Find las movies");
+        break;
+    case "do-what-it-says":
+        console.log("You can do it yourself")
+        break;
+}
 
 // Commands that will be available:
 //  $ concert-this 

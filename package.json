@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/whereispolaris/liri-node-app/issues"
   },
-  "homepage": "https://github.com/whereispolaris/liri-node-app#readme"
+  "homepage": "https://github.com/whereispolaris/liri-node-app#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
 }
