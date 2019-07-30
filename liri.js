@@ -1,4 +1,5 @@
 require("dotenv").config();
+var axios = require("axios");
 
 // var spotify = new Spotify(keys.spotify);
 
@@ -6,17 +7,35 @@ var command = process.argv;
 
 switch (command[2]) {
     case "concert-this":
-        console.log("Find concerts")
+        concertThis(command[3])
         break;
     case "spotify-this-song":
-        console.log("Find spotify")
+        console.log("Find las movies");
         break;
     case "movie-this":
-        console.log("Find las movies");
+        movieThis(command[3])
         break;
     case "do-what-it-says":
         console.log("You can do it yourself")
         break;
+}
+
+function concertThis(band) {
+    axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(function (response) {
+        console.log(response.data);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+function movieThis(movie) {
+    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
+        function (response) {
+            console.log("The movie's rating is: " + response.data.imdbRating);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 // Commands that will be available:
