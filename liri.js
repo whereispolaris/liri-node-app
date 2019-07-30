@@ -18,7 +18,7 @@ switch (command) {
         movieThis(value)
         break;
     case "do-what-it-says":
-        whatItSays(value)
+        whatItSays()
         break;
 }
 
@@ -60,6 +60,13 @@ function spotifyThis(song) {
             // * A preview link of the song from Spotify
             // * The album that the song is from  
         }
+        console.log(data);
+    });
+}
+
+function whatItSays() {
+    fs.readFile('random.txt', "utf8", (err, data) => {
+        if (err) throw err;
         console.log(data);
     });
 }
