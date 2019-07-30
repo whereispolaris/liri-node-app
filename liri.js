@@ -1,7 +1,10 @@
 require("dotenv").config();
+var keys = require("./keys.js");
 var axios = require("axios");
+var fs = require("fs");
+var Spotify = require('node-spotify-api');
 
-// var spotify = new Spotify(keys.spotify);
+var spotify = new Spotify(keys.spotify);
 
 var command = process.argv;
 
@@ -10,7 +13,7 @@ switch (command[2]) {
         concertThis(command[3])
         break;
     case "spotify-this-song":
-        console.log("Find las movies");
+        spotifyThis(command[3]);
         break;
     case "movie-this":
         movieThis(command[3])
@@ -37,6 +40,17 @@ function movieThis(movie) {
             console.log(error);
         });
 }
+
+function spotifyThis(song) {
+    spotify.search({ type: 'track', query: song }, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        console.log(data);
+    });
+}
+
+
 
 // Commands that will be available:
 //  $ concert-this 
