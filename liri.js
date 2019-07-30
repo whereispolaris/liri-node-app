@@ -60,7 +60,7 @@ function spotifyThis(song) {
             // * A preview link of the song from Spotify
             // * The album that the song is from  
         }
-        console.log(data);
+        console.log(data.tracks);
     });
 }
 
