@@ -33,6 +33,19 @@ function concertThis(band) {
     });
 }
 
+function spotifyThis(song) {
+    spotify.search({ type: 'track', query: song }, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+            // * Artist(s)
+            // * The song's name
+            // * A preview link of the song from Spotify
+            // * The album that the song is from  
+        }
+        console.log(data.tracks.items[0].artists[0].name);
+    });
+}
+
 function movieThis(movie) {
     axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
@@ -49,19 +62,6 @@ function movieThis(movie) {
         .catch(function (error) {
             console.log(error);
         });
-}
-
-function spotifyThis(song) {
-    spotify.search({ type: 'track', query: song }, function (err, data) {
-        if (err) {
-            return console.log('Error occurred: ' + err);
-            // * Artist(s)
-            // * The song's name
-            // * A preview link of the song from Spotify
-            // * The album that the song is from  
-        }
-        console.log(data.tracks);
-    });
 }
 
 function whatItSays() {
