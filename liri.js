@@ -31,7 +31,7 @@ function concertThis(band) {
         // * Venue location
         console.log(firstConcert.venue.city);
         // * Date of the Event(use moment to format this as "MM/DD/YYYY")
-        console.log(firstConcert.datetime);
+        console.log(moment(firstConcert.datetime).format("MM/DD/YYYY"));
     }).catch(function (error) {
         console.log(error);
     });
