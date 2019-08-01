@@ -5,6 +5,9 @@ const axios = require("axios");
 const fs = require("fs");
 const Spotify = require('node-spotify-api');
 const spotify = new Spotify(keys.spotify);
+const bandKey = process.env.APP_ID;
+const movieKey = process.env.OMDB_KEY
+
 const command = process.argv[2];
 const value = process.argv[3];
 
@@ -24,7 +27,7 @@ switch (command) {
 }
 
 function concertThis(band) {
-    axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(function (response) {
+    axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=" + bandKey).then(function (response) {
         const firstConcert = response.data[0];
         // * Name of the venue
         console.log(firstConcert.venue.name);
@@ -54,7 +57,7 @@ function spotifyThis(song) {
 }
 
 function movieThis(movie) {
-    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
+    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=" + movieKey).then(
         function (response) {
             const movieData = response.data;
             // * Title of the movie.
