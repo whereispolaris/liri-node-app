@@ -1,4 +1,5 @@
 require("dotenv").config();
+var moment = require('moment');
 const keys = require("./keys.js");
 const axios = require("axios");
 const fs = require("fs");
@@ -17,7 +18,7 @@ switch (command) {
     case "movie-this":
         movieThis(value)
         break;
-    case "do-what-it-says":
+    case "  ":
         whatItSays()
         break;
 }
