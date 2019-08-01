@@ -24,10 +24,13 @@ switch (command) {
 
 function concertThis(band) {
     axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(function (response) {
-        console.log(response.data);
+        const firstConcert = response.data[0];
         // * Name of the venue
+        console.log(firstConcert.venue.name);
         // * Venue location
+        console.log(firstConcert.venue.city);
         // * Date of the Event(use moment to format this as "MM/DD/YYYY")
+        console.log(firstConcert.datetime);
     }).catch(function (error) {
         console.log(error);
     });
