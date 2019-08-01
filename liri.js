@@ -55,15 +55,26 @@ function spotifyThis(song) {
 function movieThis(movie) {
     axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
-            console.log("The movie's rating is: " + response.data.imdbRating);
+            const movieData = response.data;
             // * Title of the movie.
+            console.log("-----------------");
+            console.log("Title: " + movieData.Title);
             // * Year the movie came out.
+            console.log("-----------------");
+            console.log("Year: " + movieData.Year);
             // * IMDB Rating of the movie.
+            console.log("Rating: " + movieData.imdbRating);
             // * Rotten Tomatoes Rating of the movie.
+            console.log("Rotten Tomatoes: " + movieData.Ratings[1].Value);
             // * Country where the movie was produced.
+            console.log("Country: " + movieData.Country);
             // * Language of the movie.
+            console.log("Language: " + movieData.Language);
             // * Plot of the movie.
+            console.log("Plot: " + movieData.Plot);
             // * Actors in the movie.
+            console.log("Actors: " + movieData.Actors);
+            console.log("-----------------");
         })
         .catch(function (error) {
             console.log(error);
