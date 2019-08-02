@@ -62,23 +62,23 @@ function movieThis(movie) {
         function (response) {
             const movieData = response.data;
             // * Title of the movie.
-            console.log("-----------------");
-            console.log(chalk.blue("Title: ") + movieData.Title);
+            console.log(chalk.red("---------------------------"));
+            console.log(chalk.red(movieData.Title));
             // * Year the movie came out.
-            console.log("-----------------");
-            console.log(chalk.blue("Year: ") + movieData.Year);
+            console.log(chalk.red("---------------------------"));
+            console.log(chalk.blue("Year: ") + chalk.yellow(movieData.Year));
             // * IMDB Rating of the movie.
-            console.log(chalk.blue("Rating: ") + movieData.imdbRating);
+            console.log(chalk.blue("Rating: ") + chalk.yellow(movieData.imdbRating));
             // * Rotten Tomatoes Rating of the movie.
-            console.log(chalk.blue("Rotten Tomatoes: ") + movieData.Ratings[1].Value);
+            console.log(chalk.blue("Rotten Tomatoes: ") + chalk.yellow(movieData.Ratings[1].Value));
             // * Country where the movie was produced.
-            console.log(chalk.blue("Country: ") + movieData.Country);
+            console.log(chalk.blue("Country: ") + chalk.yellow(movieData.Country));
             // * Language of the movie.
-            console.log(chalk.blue("Language: ") + movieData.Language);
+            console.log(chalk.blue("Language: ") + chalk.yellow(movieData.Language));
             // * Plot of the movie.
-            console.log(chalk.blue("Plot: ") + movieData.Plot);
+            console.log(chalk.blue("Plot: ") + chalk.yellow(movieData.Plot));
             // * Actors in the movie.
-            console.log(chalk.blue("Actors: ") + movieData.Actors);
+            console.log(chalk.blue("Actors: ") + chalk.yellow(movieData.Actors));
             console.log("-----------------");
         })
         .catch(function (error) {
