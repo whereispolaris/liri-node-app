@@ -3,6 +3,7 @@ var moment = require('moment');
 const keys = require("./keys.js");
 const axios = require("axios");
 const fs = require("fs");
+const chalk = require('chalk');
 const Spotify = require('node-spotify-api');
 const spotify = new Spotify(keys.spotify);
 const bandKey = process.env.APP_ID;
@@ -62,22 +63,22 @@ function movieThis(movie) {
             const movieData = response.data;
             // * Title of the movie.
             console.log("-----------------");
-            console.log("Title: " + movieData.Title);
+            console.log(chalk.blue("Title: ") + movieData.Title);
             // * Year the movie came out.
             console.log("-----------------");
-            console.log("Year: " + movieData.Year);
+            console.log(chalk.blue("Year: ") + movieData.Year);
             // * IMDB Rating of the movie.
-            console.log("Rating: " + movieData.imdbRating);
+            console.log(chalk.blue("Rating: ") + movieData.imdbRating);
             // * Rotten Tomatoes Rating of the movie.
-            console.log("Rotten Tomatoes: " + movieData.Ratings[1].Value);
+            console.log(chalk.blue("Rotten Tomatoes: ") + movieData.Ratings[1].Value);
             // * Country where the movie was produced.
-            console.log("Country: " + movieData.Country);
+            console.log(chalk.blue("Country: ") + movieData.Country);
             // * Language of the movie.
-            console.log("Language: " + movieData.Language);
+            console.log(chalk.blue("Language: ") + movieData.Language);
             // * Plot of the movie.
-            console.log("Plot: " + movieData.Plot);
+            console.log(chalk.blue("Plot: ") + movieData.Plot);
             // * Actors in the movie.
-            console.log("Actors: " + movieData.Actors);
+            console.log(chalk.blue("Actors: ") + movieData.Actors);
             console.log("-----------------");
         })
         .catch(function (error) {
