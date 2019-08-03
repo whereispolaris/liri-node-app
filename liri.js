@@ -22,9 +22,14 @@ switch (command) {
     case "movie-this":
         movieThis(value)
         break;
-    case "  ":
+    case "what-it-says":
         whatItSays()
         break;
+    case "--help":
+        instructions();
+        break;
+    default: instructions();
+
 }
 
 function concertThis(band) {
@@ -93,6 +98,15 @@ function whatItSays() {
     });
 }
 
+function instructions() {
+    console.log(chalk.magenta("----------------------"));
+    console.log(chalk.magenta("Commands you can run:"));
+    console.log(chalk.magenta("----------------------"));
+    console.log(chalk.red("concert-this" + chalk.green(" 'ARTIST' ")) + chalk.yellow("to get the the next concert for a band."));
+    console.log(chalk.red("spotify-this-song " + chalk.green(" 'SONG' ")) + chalk.yellow("to get the the song from Spotify."));
+    console.log(chalk.red("movie-this" + chalk.green(" 'MOVIE' ")) + chalk.yellow("to get information about a movie."));
+    console.log(chalk.red("do-what-it-says ") + chalk.yellow("to to run the commands stored in the random.txt file."));
+}
 
 // Commands that will be available:
 //  $ concert-this 
