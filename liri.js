@@ -35,12 +35,15 @@ switch (command) {
 function concertThis(band) {
     axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=" + bandKey).then(function (response) {
         const firstConcert = response.data[0];
+        console.log(chalk.red("---------------------------"));
+        console.log(chalk.red(band));
+        console.log(chalk.red("---------------------------"));
         // * Name of the venue
-        console.log(firstConcert.venue.name);
+        console.log(chalk.blue("Venue: ") + chalk.yellow(firstConcert.venue.name));
         // * Venue location
-        console.log(firstConcert.venue.city);
+        console.log(chalk.blue("City: ") + chalk.yellow(firstConcert.venue.city + "," + firstConcert.venue.region));
         // * Date of the Event(use moment to format this as "MM/DD/YYYY")
-        console.log(moment(firstConcert.datetime).format("MM/DD/YYYY"));
+        console.log(chalk.blue("Date: ") + chalk.yellow(moment(firstConcert.datetime).format("MM/DD/YYYY")));
     }).catch(function (error) {
         console.log(error);
     });
@@ -51,14 +54,18 @@ function spotifyThis(song) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+        console.log(chalk.red("---------------------------"));
+        console.log(chalk.red(data.tracks.items[0].name));
+        console.log(chalk.red("---------------------------"));
+
         // * Artist(s)
-        console.log(data.tracks.items[0].artists[0].name);
+        console.log(chalk.blue("Artist: ") + chalk.yellow(data.tracks.items[0].artists[0].name));
         // * The song's name
-        console.log(data.tracks.items[0].name);
+        console.log(chalk.blue("Song: ") + chalk.yellow((data.tracks.items[0].name)));
         // * A preview link of the song from Spotify
-        console.log(data.tracks.items[0].artists[0].external_urls.spotify);
+        console.log(chalk.blue("Song Link: ") + chalk.yellow(data.tracks.items[0].artists[0].external_urls.spotify));
         // * The album that the song is from  
-        console.log(data.tracks.items[0].album.name);
+        console.log(chalk.blue("Album: ") + chalk.yellow(data.tracks.items[0].album.name));
     });
 }
 
