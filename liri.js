@@ -41,7 +41,7 @@ function concertThis(band) {
         // * Name of the venue
         console.log(chalk.blue("Venue: ") + chalk.yellow(firstConcert.venue.name));
         // * Venue location
-        console.log(chalk.blue("City: ") + chalk.yellow(firstConcert.venue.city + "," + firstConcert.venue.region));
+        console.log(chalk.blue("City: ") + chalk.yellow(firstConcert.venue.city + ", " + firstConcert.venue.region));
         // * Date of the Event(use moment to format this as "MM/DD/YYYY")
         console.log(chalk.blue("Date: ") + chalk.yellow(moment(firstConcert.datetime).format("MM/DD/YYYY")));
     }).catch(function (error) {
@@ -50,6 +50,9 @@ function concertThis(band) {
 }
 
 function spotifyThis(song) {
+    if (!song) {
+        song = 'the sign ace of base';
+    }
     spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -70,6 +73,9 @@ function spotifyThis(song) {
 }
 
 function movieThis(movie) {
+    if (!movie) {
+        movie = 'Mr Nobody';
+    }
     axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=" + movieKey).then(
         function (response) {
             const movieData = response.data;
