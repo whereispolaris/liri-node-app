@@ -36,7 +36,7 @@ function concertThis(band) {
     axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=" + bandKey).then(function (response) {
         const firstConcert = response.data[0];
         console.log(chalk.red("---------------------------"));
-        console.log(chalk.red(band));
+        console.log(chalk.red("Next Concert For: " + firstConcert.lineup[0]));
         console.log(chalk.red("---------------------------"));
         // * Name of the venue
         console.log(chalk.blue("Venue: ") + chalk.yellow(firstConcert.venue.name));
