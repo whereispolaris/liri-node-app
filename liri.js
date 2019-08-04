@@ -23,7 +23,7 @@ switch (command) {
         movieThis(value)
         break;
     case "what-it-says":
-        whatItSays()
+        whatItSays();
         break;
     case "--help":
         instructions();
@@ -107,7 +107,24 @@ function movieThis(movie) {
 function whatItSays() {
     fs.readFile('random.txt', "utf8", (err, data) => {
         if (err) throw err;
-        console.log(data);
+
+        var dataArr = data.split(",");
+        var saysCommand = dataArr[0];
+        var saysValue = dataArr[1];
+
+        switch (saysCommand) {
+            case "concert-this":
+                concertThis(saysValue)
+                break;
+            case "spotify-this-song":
+                spotifyThis(saysValue)
+                break;
+            case "movie-this":
+                movieThis(saysValue)
+                break;
+            default:
+                console.log("invalid command");
+        }
     });
 }
 
@@ -118,7 +135,7 @@ function instructions() {
     console.log(chalk.red("concert-this" + chalk.green(" 'ARTIST' ")) + chalk.yellow("to get the the next concert for a band."));
     console.log(chalk.red("spotify-this-song " + chalk.green(" 'SONG' ")) + chalk.yellow("to get the the song from Spotify."));
     console.log(chalk.red("movie-this" + chalk.green(" 'MOVIE' ")) + chalk.yellow("to get information about a movie."));
-    console.log(chalk.red("do-what-it-says ") + chalk.yellow("to to run the commands stored in the random.txt file."));
+    console.log(chalk.red("what-it-says ") + chalk.yellow("to run the commands stored in the random.txt file."));
 }
 
 // Commands that will be available:
