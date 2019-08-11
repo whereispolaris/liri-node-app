@@ -13,7 +13,9 @@ APIs Used:
 - [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
 - [node-spotify-api ](https://www.npmjs.com/package/node-spotify-api)
 
-Video Demo: https://share.getcloudapp.com/6qu0DJPJ
+![LIRI Node Demo](https://santiagoenciso.com/img/liriDemo.gif "LIRI Node Demo")
+
+Full Video Demo: https://share.getcloudapp.com/6qu0DJPJ
 
 Commands:
 
