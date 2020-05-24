@@ -15,7 +15,7 @@ APIs Used:
 
 ![LIRI Node Demo](https://santiagoenciso.com/img/liriDemo.gif "LIRI Node Demo")
 
-Full Video Demo: https://share.getcloudapp.com/6qu0DJPJ
+Full Video Demo: https://santiagoenciso.com/videos/liri-full-demo.mov
 
 Commands:
 
